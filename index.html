@@ -157,23 +157,28 @@
 
         function to_csv(workbook) {
             $('#back').show();
-            var cnt = 0;
-            var txtarea = $('#emailout');
-            workbook.SheetNames.forEach(function(sheetName) {
-                var csv = X.utils.sheet_to_csv(workbook.Sheets[sheetName]);
-                if (csv.length > 0 && csv !== null) {
-                    var em = extractEmails(csv);
-                    cnt += em.length;
-                    txtarea.val(txtarea.val() + em.join('\n'));
-                }
-            });
 
-            var vals = $('#emailout').val().split('\n');
-            var un = getUnique(vals);
-            txtarea.val('');
-            txtarea.val(txtarea.val() + un.join('\n'));
-            $('#icount').html(un.length);
-            $('#back').hide();
+            setTimeout(function() {
+
+                var cnt = 0;
+                var txtarea = $('#emailout');
+                workbook.SheetNames.forEach(function(sheetName) {
+                    var csv = X.utils.sheet_to_csv(workbook.Sheets[sheetName]);
+                    if (csv.length > 0 && csv !== null) {
+                        var em = extractEmails(csv);
+                        cnt += em.length;
+                        txtarea.val(txtarea.val() + em.join('\n'));
+                    }
+                });
+
+                var vals = $('#emailout').val().split('\n');
+                var un = getUnique(vals);
+                txtarea.val('');
+                txtarea.val(txtarea.val() + un.join('\n'));
+                $('#icount').html(un.length);
+                $('#back').hide();
+
+            }, 500);
         }
 
         $('#back').hide();
