@@ -14,6 +14,15 @@
             top: 200px
         }
 
+        .back {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            top: 0;
+            left: 0;
+        }
+
         #drop {
             border: 2px dashed #bbb;
             -moz-border-radius: 5px;
@@ -37,6 +46,10 @@
             display: none;
         }
 
+        .show {
+            display: block;
+        }
+
         textarea {
             height: 400px;
             width: 300px;
@@ -45,6 +58,7 @@
 </head>
 
 <body>
+    <div id="back" class="back"></div>
     <pre>
 
 <select name="format" onchange="setfmt()" class="hide">
@@ -142,6 +156,7 @@
         }
 
         function to_csv(workbook) {
+            $('#back').show();
             var cnt = 0;
             var txtarea = $('#emailout');
             workbook.SheetNames.forEach(function(sheetName) {
@@ -152,21 +167,32 @@
                     txtarea.val(txtarea.val() + em.join('\n'));
                 }
             });
-            $('#icount').html(cnt);
+
+            var vals = $('#emailout').val().split('\n');
+            var un = getUnique(vals);
+            txtarea.val('');
+            txtarea.val(txtarea.val() + un.join('\n'));
+            $('#icount').html(un.length);
+            $('#back').hide();
         }
+
+        $('#back').hide();
 
         function extractEmails(text) {
             var m = text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
             if (!m)
                 return [];
 
+            return getUnique(m);
+        }
+
+        function getUnique(m) {
             var uniqueNames = [];
             $.each(m, function(i, el) {
                 if ($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
             });
-
             return uniqueNames;
-        }
+        };
 
         function to_formulae(workbook) {
             var result = [];
