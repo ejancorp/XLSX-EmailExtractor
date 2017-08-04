@@ -13,7 +13,6 @@
 
 <body>
 
-
   <div class="container">
 
     <div class="row">
@@ -38,7 +37,7 @@
     <div class="row upload-container">
       <div class="col-md-12 no-margin no-padding">
         <br/>
-        <input type="file" name="xlfile" id="xlf" /> ... or click here to select a file
+        <input type="file" accept=".xlsx" name="xlfile" id="xlf" /> ... or click here to select a file
       </div>
     </div>
 
@@ -62,8 +61,8 @@
     <div class="row result-header">
 
       <div class="page-header">
-        <h3>Results</h3>
-        <a href="#" class="btn btn-default">
+        <h3>Results&nbsp;<span class="badge" id="allCount">0</span></h3>
+        <a href="#" class="btn btn-default" id="downloadAll">
           Download All
         </a>
         <div class="checkbox">
@@ -75,11 +74,7 @@
 
     </div>
 
-
-    <div class="row result-container">
-
-    </div>
-
+    <div class="row result-container"></div>
 
   </div>
 
