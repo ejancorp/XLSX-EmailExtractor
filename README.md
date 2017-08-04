@@ -23,7 +23,7 @@
 
 #### To do
 
-- [ ] Seperation of concern
+- [ ] Separation of concern
 - [ ] Refactor approaches
 - [ ] Use template engines?
 - [ ] Async return of result
