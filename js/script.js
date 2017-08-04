@@ -272,26 +272,47 @@
     return '<li class="list-group-item ' + this.itemClass + '">' + item + '</li>';
   };
 
+  /**
+   * Show results container
+   * @return {Void}
+   */
   Extractor.prototype.showResults = function() {
     jQuery(this.resultHeader).show();
     jQuery(this.resultContainer).show();
   };
 
+  /**
+   * Hide results container
+   * @return {Void}
+   */
   Extractor.prototype.HideResults = function() {
     jQuery(this.resultHeader).hide();
     jQuery(this.resultContainer).hide();
   };
 
+  /**
+   * Show progress container
+   * @return {Void}
+   */
   Extractor.prototype.startProgress = function() {
     jQuery(this.uploadContainer).hide();
     jQuery(this.loadingContainer).show();
   };
 
+  /**
+   * Hide progress container
+   * @return {Void}
+   */
   Extractor.prototype.stopProgress = function() {
     jQuery(this.uploadContainer).show();
     jQuery(this.loadingContainer).hide();
   };
 
+  /**
+   * Event function on click button, get related items and create an array
+   * @param  {Object} event Event object
+   * @return {Void}
+   */
   Extractor.prototype.downloadAll = function(event) {
 
     var items = jQuery.map(jQuery('.' + this.itemClass), this.getItemString.bind(this));
@@ -299,6 +320,11 @@
     event.preventDefault();
   };
 
+  /**
+   * Event function on click button, get related items and create an array
+   * @param  {Object} event Event object
+   * @return {Void}
+   */
   Extractor.prototype.downloadSheet = function(event) {
 
     var panel = jQuery(event.target).parents('.' + this.panelClass);
@@ -308,10 +334,21 @@
     event.preventDefault();
   };
 
+  /**
+   * Get element text or string
+   * @param  {String} value Element string
+   * @return {String}       string without html tags
+   */
   Extractor.prototype.getItemString = function(value) {
     return jQuery(value).text();
   };
 
+  /**
+   * download array as csv file
+   * @param  {String} name  prefix name for csv
+   * @param  {Array} values list of data in array
+   * @return {Void}
+   */
   Extractor.prototype.downloadToCSV = function(name, values) {
 
     name = name ? name : 'file';
