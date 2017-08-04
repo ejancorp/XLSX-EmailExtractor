@@ -18,3 +18,14 @@
 - Extract
 - Open index.html on any modern browser (eg. chrome, firefox, opera, safari)
 - Use it!
+
+
+
+#### To do
+
+- [ ] Seperation of concern
+- [ ] Refactor approaches
+- [ ] Use template engines?
+- [ ] Async return of result
+- [ ] Update Markdown
+- [ ] Update Doc Blocks
