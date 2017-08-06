@@ -32,6 +32,9 @@
 
     this.allowedFileType = ['xlsx'];
 
+    this.els = [];
+    this.sheetCount = 0;
+
     this.collection = [];
   };
 
@@ -148,7 +151,7 @@
   };
 
   Extractor.prototype.iterateSheets = function(workbook, callback) {
-
+    this.sheetCount = Object.keys(workbook.SheetNames).length;
     workbook.SheetNames.forEach(function(sheetName) {
       callback.call(this, workbook.Sheets[sheetName], sheetName);
     }.bind(this));
@@ -163,8 +166,8 @@
 
   Extractor.prototype.fileToCSV = function(sheet, sheetName) {
 
-    var csv = XLSX.utils.sheet_to_csv(sheet);
-    if (csv.length) {
+    var csv = JSON.stringify(sheet);
+    if (csv) {
       this.formSheetData(csv, sheetName);
     }
   };
@@ -175,12 +178,16 @@
     var listTemplate = this.createListTemplate(em);
     var panelTemplate = this.sheetPanelTemplate(sheetName, Object.keys(em).length, listTemplate);
 
-    jQuery(this.resultContainer).append(panelTemplate);
-
     this.collection.push(em);
-    this.showResults();
-    this.renderAllCount();
-    this.stopProgress();
+    this.els.push(panelTemplate);
+    this.sheetCount -= 1;
+
+    if(this.sheetCount <= 0) {
+        jQuery(this.resultContainer).html(this.els.join(''));
+        this.showResults();
+        this.renderAllCount();
+        this.stopProgress();
+    }
   };
 
   Extractor.prototype.processWorkers = function(data, callback) {
