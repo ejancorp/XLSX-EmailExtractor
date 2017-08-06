@@ -343,7 +343,7 @@
     var panel = jQuery(event.target).parents('.' + this.panelClass);
     var items = jQuery.map(panel.find('.' + this.itemClass), this.getItemString.bind(this));
 
-    this.downloadToCSV(panel.find(this.panelTitle).text(), items);
+    this.downloadToCSV([panel.find(this.panelTitle).text(), this.file.name].join('-'), items);
     event.preventDefault();
   };
 
