@@ -36,6 +36,19 @@
   };
 
   Extractor.prototype.init = function() {
+
+    try {
+      var worker = new Worker(this.workerScript);
+    } catch (e) {
+
+      jQuery(this.useWorkerElement).attr('disabled', true);
+      jQuery(this.useWorkerElement).prop('checked', false);
+      jQuery(this.useWorkerElement).parents('.checkbox').hide();
+      this.useWorker = false;
+
+      console.log(e);
+    }
+
     this.reader = typeof FileReader !== "undefined" && typeof FileReader.prototype !== "undefined" && typeof FileReader.prototype.readAsBinaryString !== "undefined";
     this.bindEvents();
   };
