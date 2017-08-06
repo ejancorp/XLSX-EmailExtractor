@@ -30,7 +30,7 @@
 
     this.workerScript = './js/xlsxworker.js';
 
-    this.allowedFileType = ['xlsx'];
+    this.allowedFileType = ['xlsx', 'csv'];
 
     this.els = [];
     this.sheetCount = 0;
