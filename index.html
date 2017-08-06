@@ -2,93 +2,95 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>XLSX File Email Extractor</title>
+    <meta charset="utf-8">
+    <title>XLSX File Email Extractor</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-3.min.js" data-apikey="10c5b205c32f30860f890e520e2661eb"></script>
 
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
-  <div class="container">
+    <div class="container">
 
-    <div class="row">
-      <div class="page-header">
-        <h2>XLSX File Email Extractor</h2>
-      </div>
-    </div>
+        <div class="row">
+            <div class="page-header">
+                <h2>XLSX File Email Extractor</h2>
+            </div>
+        </div>
 
-    <div class="row upload-container">
-      <div class="col-md-12 no-margin no-padding">
-        <div class="checkbox">
-          <label>
+        <div class="row upload-container">
+            <div class="col-md-12 no-margin no-padding">
+                <div class="checkbox">
+                    <label>
             <input type="checkbox" id="useWorker" checked> Use Web Workers (Faster)
           </label>
-        </div>
-      </div>
-      <div class="col-md-12 no-margin no-padding">
-        <div id="drop">Drop a XLSX file here to see sheet data</div>
-      </div>
-    </div>
-
-    <div class="row upload-container">
-      <div class="col-md-12 no-margin no-padding">
-        <br/>
-        <input type="file" accept=".xlsx" name="xlfile" id="xlf" /> ... or click here to select a file
-      </div>
-    </div>
-
-    <div class="row loading-container">
-      <div class="col-md-12 no-margin no-padding">
-
-        <div class="container">
-          <div class="wavecontainer">
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-          </div>
-          <h5>Extracting in progress...</h5>
+                </div>
+            </div>
+            <div class="col-md-12 no-margin no-padding">
+                <div id="drop">Drop a XLSX file here to see sheet data</div>
+            </div>
         </div>
 
-      </div>
-    </div>
+        <div class="row upload-container">
+            <div class="col-md-12 no-margin no-padding">
+                <br/>
+                <input type="file" accept=".xlsx" name="xlfile" id="xlf" /> ... or click here to select a file
+            </div>
+        </div>
 
-    <div class="row result-header">
+        <div class="row loading-container">
+            <div class="col-md-12 no-margin no-padding">
 
-      <div class="page-header">
-        <h3>Results&nbsp;<span class="badge" id="allCount">0</span></h3>
-        <a href="#" class="btn btn-default" id="downloadAll">
+                <div class="container">
+                    <div class="wavecontainer">
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                    </div>
+                    <h5>Extracting in progress...</h5>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row result-header">
+
+            <div class="page-header">
+                <h3>Results&nbsp;<span class="badge" id="allCount">0</span></h3>
+                <a href="#" class="btn btn-default" id="downloadAll">
           Download All
         </a>
-        <div class="checkbox">
-          <label>
+                <div class="checkbox">
+                    <label>
             <input type="checkbox" id="filterDownloads" checked> Remove duplicate entries for all sheets (on Download All)
           </label>
+                </div>
+            </div>
+
         </div>
-      </div>
+
+        <div class="row result-container"></div>
 
     </div>
 
-    <div class="row result-container"></div>
+    <!-- vendors -->
+    <script src="lib/cpexcel.js"></script>
+    <script src="lib/shim.js"></script>
+    <script src="lib/jszip.js"></script>
+    <script src="lib/xlsx.js"></script>
+    <script src="lib/jquery.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/bootbox.min.js"></script>
 
-  </div>
-
-  <!-- vendors -->
-  <script src="lib/cpexcel.js"></script>
-  <script src="lib/shim.js"></script>
-  <script src="lib/jszip.js"></script>
-  <script src="lib/xlsx.js"></script>
-  <script src="lib/jquery.js"></script>
-  <script src="lib/bootstrap.min.js"></script>
-  <script src="lib/bootbox.min.js"></script>
-
-  <!-- scripts -->
-  <script src="js/script.js"></script>
+    <!-- scripts -->
+    <script src="js/script.js"></script>
 
 </body>
 
