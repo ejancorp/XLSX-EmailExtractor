@@ -364,7 +364,7 @@
    */
   Extractor.prototype.downloadToCSV = function(name, values) {
 
-    name = name ? name : 'file';
+    name = name ? name.replace(/ /g,"-") : 'file';
 
     if (jQuery(this.filterDuplicates).is(':checked')) {
       values = this.removeDuplicateValues(values);
